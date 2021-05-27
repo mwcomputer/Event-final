@@ -9,31 +9,28 @@ let status = true;
 
 /********  Event-Listener **********/
 
+// Webseite geladen --> auf (Anfangs)-Zustand umschalten
+window.addEventListener("load",toggleStatus);
+
+// Klick auf Btn  --> Zustand umschalten
 btn.addEventListener("click",toggleStatus);
 
 function toggleStatus() {
     status = !status;
-    ausgabe(status);
-}
-
-/********  Tools **********/
-function test() {
-    let cond = (document.body.className == "day");
-    if (cond) { // ???
-         // night-mode
-        switchClassName("night");
-        switchBtnTxt("day");
-    } else {
-        // day-mode
-        switchClassName("day");
-        switchBtnTxt("night");
-
-    }
-   
+    updateView();
 }
 
 
 /********  Änderung in View-Schicht **********/
+function updateView() {
+    if (status) { // night-mode
+        switchClassName("night");
+        switchBtnTxt("day");
+    } else { // day-mode
+        switchClassName("day");
+        switchBtnTxt("night");
+    }
+}
 
 // Modul: Umschaltung Klasse | Test:
 //switchClassName("night");
