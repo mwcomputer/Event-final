@@ -1,17 +1,35 @@
 
-
+/********  Variablen **********/
 
 /** Btn */
 let btn = document.getElementById("trigBtn");
 
-//ausgabe(btn);
+/** Status */
+let status = true;
 
-btn.addEventListener("click",test);
+/********  Event-Listener **********/
 
+btn.addEventListener("click",toggleStatus);
+
+function toggleStatus() {
+    status = !status;
+    ausgabe(status);
+}
 
 /********  Tools **********/
 function test() {
-    ausgabe("hi");
+    let cond = (document.body.className == "day");
+    if (cond) { // ???
+         // night-mode
+        switchClassName("night");
+        switchBtnTxt("day");
+    } else {
+        // day-mode
+        switchClassName("day");
+        switchBtnTxt("night");
+
+    }
+   
 }
 
 
